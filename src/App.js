@@ -46,7 +46,7 @@ class App extends Component {
     clearTimeout(this.intervalID);
   }
 
-  //  push list to cache and quey with user data [cache refreshes on every 30 sec - 1 minute]
+  // @todo: push list to cache and query with user data [cache refreshes on every 30 sec - 1 minute]
 
   getData = () => {
     fetch(API_ACTION_GET_ALL_ITEMS)

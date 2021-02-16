@@ -6,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { SettingsInputAntennaTwoTone } from "@material-ui/icons";
 import { Toaster } from "./toastMessage";
 import { API_ACTION_SAVE_ITEM, SEVERITIES } from "../AppConstants";
 import axios from "axios";
@@ -167,7 +166,7 @@ export const AddItemPop = (params) => {
       <Toaster
         pop={showToast}
         onClose={closeToast}
-        severity="info"
+        severity={toastSeveriety}
         message={toastMessage}
       ></Toaster>
     </>
