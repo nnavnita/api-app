@@ -27,19 +27,19 @@ const List = ({ apis }) => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header">
-            <Typography className={classes.heading}>{api.uniqueTitle}</Typography>
+            <Typography className={classes.heading}>Unique Title: {api.uniqueTitle}</Typography>
         </AccordionSummary>
         <AccordionDetails>
             <Typography>
             <p>
-                {api.subTitle}<br />
-                {api.publisher}<br />
-                {api.description}<br />
-                {api.url}<br />
-                {api.sourceUrl}<br />
-                {api.inputModel}<br />
-                {api.outputModel}<br />
-                {api.isPaid}<br />
+                Subtitle: {api.subTitle}<br />
+                Publisher: {api.publisher}<br />
+                Description: {api.description}<br />
+                URL: {api.url}<br />
+                Source URL: {api.sourceUrl}<br />
+                Input Model: {api.inputModel}<br />
+                Output Model: {api.outputModel}<br />
+                Is Paid?: {api.isPaid}<br />
             </p>
             </Typography>
         </AccordionDetails>
