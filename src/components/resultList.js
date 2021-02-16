@@ -6,6 +6,9 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,6 +18,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
     },
+    freeChip: {
+        background: '#66cc00',
+        color: "#fff",
+        textTransform: 'uppercase',
+        fontFamily: 'Monospace',
+        fontWeight: '300',
+    },
+    paidChip: {
+        background: '#e03e1e',
+        textTransform: 'uppercase',
+        fontFamily: 'Monospace',
+        fontWeight: '300',
+    }
 }));
 
 const List = ({ apis }) => {
@@ -27,7 +43,20 @@ const List = ({ apis }) => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header">
-            <Typography className={classes.heading}>Unique Title: {api.uniqueTitle}</Typography>
+            <Grid container alignItems="center">
+          <Grid item xs>
+            <Typography gutterBottom variant="h7">
+              {api.uniqueTitle}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Chip 
+                size="small"
+                label={api.isPaid? "Paid" : "Free"}
+                color={api.isPaid? "Secondary" : "Primary"}
+                className={api.isPaid? classes.paidChip : classes.freeChip} />
+          </Grid>
+        </Grid>
         </AccordionSummary>
         <AccordionDetails>
             <Typography>
@@ -39,7 +68,7 @@ const List = ({ apis }) => {
                 Source URL: {api.sourceUrl}<br />
                 Input Model: {api.inputModel}<br />
                 Output Model: {api.outputModel}<br />
-                Is Paid?: {api.isPaid}<br />
+                Is Paid?: {api.isPaid.toString()}<br />
             </p>
             </Typography>
         </AccordionDetails>

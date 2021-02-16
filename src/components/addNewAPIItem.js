@@ -74,7 +74,7 @@ export const AddItemPop = (params) => {
           <DialogTitle id="form-dialog-title">Add API</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Add new API. Please make sure that you add all relevant details to
+              Add a new API. Please make sure that you add all the relevant details to
               enable better search results.
             </DialogContentText>
             <TextField

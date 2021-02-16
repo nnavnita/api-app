@@ -3,9 +3,9 @@ import List from "./components/resultList";
 import { TextField, Button } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { AddItemPop } from "./components/addNewAPIItem";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import AddIcon from '@material-ui/icons/Add';
 import { API_ACTION_GET_ALL_ITEMS } from "./AppConstants";
+import './App.css';
 
 class App extends Component {
   state = {
@@ -68,45 +68,37 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <Grid justify="space-between" container spacing={3}>
-          <Grid direction="row-reverse" item xs={6} sm={3}>
-            <div className=" AddItemButton">
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={this.showAddItemPopUp}
-              >
-                Add New Item
-              </Button>
-              <AddItemPop
-                pop={this.state.displayPop}
-                onClose={this.closeAddItemPopUp}
-              ></AddItemPop>
-            </div>
-          </Grid>
-          <Grid item xs={12}>
-            <div style={{ padding: "10%" }}>
-              <Autocomplete
-                id="search"
-                options={this.state.APIs.map((api) => api.uniqueTitle)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Search"
-                    value={this.state.searchTerm}
-                    onChange={this.editSearchTerm}
-                    onKeyDown={this.dynamicSearch}
-                  />
-                )}
+      <div className="app">
+        <div className="AddItemButton paddingTop">
+          <Button
+            startIcon={<AddIcon />}
+            variant="contained"
+            color="primary"
+            onClick={this.showAddItemPopUp}>
+            Add New Item
+          </Button>
+          <AddItemPop
+            pop={this.state.displayPop}
+            onClose={this.closeAddItemPopUp}/>
+        </div>
+        <div className="searchComp paddingTop">
+          <Autocomplete
+            id="search"
+            options={this.state.APIs.map((api) => api.uniqueTitle)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder="Search"
+                value={this.state.searchTerm}
+                onChange={this.editSearchTerm}
+                onKeyDown={this.dynamicSearch}
               />
-
-              <br />
-              <List apis={this.state.results} />
-            </div>
-          </Grid>
-        </Grid>
-      </>
+            )}
+          />
+          <br />
+          <List apis={this.state.results} />
+        </div>
+      </div>
     );
   }
 }
