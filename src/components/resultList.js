@@ -13,6 +13,8 @@ import Tabs from '@material-ui/core/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Pagination from '@material-ui/lab/Pagination';
+import Button from '@material-ui/core/Button';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -53,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     tabs: {
         backgroundColor: theme.palette.background.paper,
         width: "100%"
+    },
+    pagination: {
+        '& > *': {
+            marginTop: theme.spacing(2)
+        }
     },
     title: {
         fontSize: theme.typography.pxToRem(15),
@@ -95,6 +102,7 @@ const List = ({ apis }) => {
         setValue(index);
     };
     return (
+    <div>
     <div>
         {apis.map((api) => (
         <Accordion>
@@ -152,7 +160,7 @@ const List = ({ apis }) => {
                 onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction}>
                     <p>{api.description}</p>
-                    <div>{api.url}</div>
+                    <div className="url">{api.url}</div>
                     <div>{api.sourceUrl}</div>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
@@ -166,6 +174,10 @@ const List = ({ apis }) => {
         </AccordionDetails>
         </Accordion>
         ))}
+    </div>
+    <Grid container justify = "center" className={classes.pagination}>
+        <Pagination count={10} showFirstButton showLastButton />
+    </Grid>
     </div>
     )
 };

@@ -9,3 +9,10 @@
 .paddingTop {
     padding-top: 5%;
 }
+
+.url {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #555555;
+    background-color: #FFA500;
+}
